@@ -1,218 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Portfolio</title>
-    <!-- Load Tailwind CSS from CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Use a vintage typewriter font, Courier Prime -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap">
-    <style>
-        body {
-            font-family: 'Courier Prime', monospace;
-            @apply bg-white text-black;
-        }
-        /* Style for the custom message box */
-        .message-box {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            padding: 1rem 1.5rem;
-            border: 2px solid black;
-            transition: all 0.3s ease-in-out;
-            transform: translateY(-100px);
-            opacity: 0;
-            background-color: white;
-            color: black;
-        }
-        .message-box.show {
-            transform: translateY(0);
-            opacity: 1;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>harsh diwan | portfolio</title>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Courier New', monospace;
+      background-color: #111;
+      color: #eee;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    header {
+      background: #222;
+      padding: 2rem;
+      text-align: center;
+      border-bottom: 4px solid #555;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #f4c542;
+    }
+    header p {
+      font-size: 1rem;
+      color: #ccc;
+    }
+    nav {
+      background: #333;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1rem;
+      border-bottom: 2px solid #555;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav a {
+      color: #f4c542;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      color: #fff;
+    }
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    article {
+      margin-bottom: 2rem;
+      padding: 1rem;
+      border: 1px solid #555;
+      background: #1a1a1a;
+    }
+    article h2 {
+      color: #f4c542;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #222;
+      border-top: 4px solid #555;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+    a.inline-link {
+      color: #f4c542;
+      text-decoration: underline;
+    }
+    a.inline-link:hover {
+      color: #fff;
+    }
+    ul.timeline {
+      list-style: none;
+      padding: 0;
+    }
+    ul.timeline li {
+      margin-bottom: 1rem;
+      padding: 0.5rem;
+      border-left: 3px solid #f4c542;
+      padding-left: 1rem;
+    }
+  </style>
 </head>
-<body class="antialiased">
+<body>
+  <header>
+    <h1>harsh diwan</h1>
+    <p>cs undergrad | coding, markets, experiments</p>
+  </header>
 
-    <!-- Custom message box for feedback -->
-    <div id="message-box" class="message-box"></div>
+  <nav>
+    <a href="#portfolio" class="nav-link">portfolio</a>
+    <a href="#blogs" class="nav-link">blogs</a>
+    <a href="#about" class="nav-link">about</a>
+    <a href="#skills" class="nav-link">skills</a>
+    <a href="#timeline" class="nav-link">timeline</a>
+    <a href="#contact" class="nav-link">contact</a>
+    <a href="#resume" class="nav-link">resume</a>
+  </nav>
 
-    <!-- Header & Navigation -->
-    <header class="bg-white sticky top-0 z-50 border-b-2 border-black">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <!-- Replace 'Your Name' with your name or brand -->
-            <a href="#" class="font-bold text-xl text-black">Your Name</a>
-            
-            <!-- Mobile Menu Button (Hamburger) -->
-            <button id="mobile-menu-button" class="md:hidden p-2 border-2 border-black focus:outline-none">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                </svg>
-            </button>
-
-            <!-- Desktop Navigation Links -->
-            <nav id="desktop-menu" class="hidden md:flex space-x-6">
-                <a href="#about" class="hover:underline transition duration-300">About</a>
-                <a href="#projects" class="hover:underline transition duration-300">Projects</a>
-                <a href="#contact" class="hover:underline transition duration-300">Contact</a>
-            </nav>
-        </div>
-
-        <!-- Mobile Navigation Menu (hidden by default) -->
-        <nav id="mobile-menu" class="hidden md:hidden bg-white border-t-2 border-black py-2 transition-all duration-300 ease-in-out">
-            <a href="#about" class="block px-4 py-2 hover:bg-gray-200 transition duration-300">About</a>
-            <a href="#projects" class="block px-4 py-2 hover:bg-gray-200 transition duration-300">Projects</a>
-            <a href="#contact" class="block px-4 py-2 hover:bg-gray-200 transition duration-300">Contact</a>
-        </nav>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="bg-black py-16 md:py-24 text-white">
-        <div class="container mx-auto px-4 grid md:grid-cols-2 items-center gap-8">
-            <div class="text-center md:text-left">
-                <!-- Replace with your headline -->
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
-                    Hello, I'm <span class="text-gray-400">Your Name</span>.
-                </h1>
-                <!-- Replace with your professional title or mission statement -->
-                <p class="mt-4 text-lg text-gray-400">
-                    A Computer Science Undergrad & Developer.
-                </p>
-                <!-- Replace 'your-email@example.com' with your actual email address -->
-                <a href="#contact" class="mt-8 inline-block px-6 py-3 bg-white text-black border-2 border-white font-medium hover:bg-gray-200 transition duration-300 transform hover:scale-105">
-                    Get In Touch
-                </a>
-            </div>
-            <div class="flex justify-center md:justify-end">
-                <!-- Replace with a photo of yourself. Use a high-quality, square image. -->
-                <img src="https://placehold.co/400x400/000000/FFFFFF?text=CS+Student" alt="Your Name's photo" class="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 object-cover border-4 border-white grayscale">
-            </div>
-        </div>
+  <main>
+    <section id="portfolio">
+      <article>
+        <h2>portfolio</h2>
+        <p>showcase of projects + experiments. see my <a href="https://github.com/realharshdiwan" class="inline-link" target="_blank">github</a> or <a href="https://www.kaggle.com/realharshdiwan" class="inline-link" target="_blank">kaggle</a> for more.</p>
+      </article>
+      <article>
+        <h2>featured project</h2>
+        <p>monte carlo stock simulation in python. <a href="https://towardsdatascience.com/monte-carlo-simulation" class="inline-link" target="_blank">learn what monte carlo means</a> while i clean up my code.</p>
+      </article>
     </section>
 
-    <!-- About Me Section -->
-    <section id="about" class="py-16 md:py-24 bg-white border-t-2 border-black">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold text-black mb-4">About Me</h2>
-            <!-- Replace with your biography -->
-            <p class="max-w-3xl mx-auto text-lg text-black">
-                I am a computer science student with a strong interest in software engineering and problem-solving. I've focused my studies on **data structures**, **algorithms**, and **full-stack development**. I'm passionate about creating clean, efficient, and scalable code, and I'm always looking for opportunities to contribute to open-source projects.
-            </p>
-        </div>
+    <section id="blogs">
+      <article>
+        <h2>blogs</h2>
+        <p>first posts will be me thinking out loud on finance + code. placeholder rn. meanwhile, check <a href="https://www.quantstart.com/" class="inline-link" target="_blank">quantstart</a> which i’ve been reading a lot.</p>
+      </article>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="py-16 md:py-24 bg-white border-t-2 border-black">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold text-black mb-12">My Projects</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project Card 1 -->
-                <div class="bg-white p-6 border-2 border-black">
-                    <!-- Placeholder image for your project. -->
-                    <img src="https://placehold.co/600x400/000000/FFFFFF?text=Algorithmic+Tool" alt="Project 1" class="mb-4 w-full h-48 object-cover grayscale">
-                    <h3 class="text-xl font-semibold mb-2 text-black">Algorithmic Visualizer</h3>
-                    <p class="text-sm text-black">A web application that visualizes classic algorithms like A* search and Dijkstra's. Built using React and D3.js to illustrate complex concepts.</p>
-                </div>
-                <!-- Project Card 2 -->
-                <div class="bg-white p-6 border-2 border-black">
-                    <img src="https://placehold.co/600x400/000000/FFFFFF?text=Chess+Engine" alt="Project 2" class="mb-4 w-full h-48 object-cover grayscale">
-                    <h3 class="text-xl font-semibold mb-2 text-black">Command-Line Chess Engine</h3>
-                    <p class="text-sm text-black">A command-line based chess engine written in C++ focusing on board representation, move generation, and minimax algorithms.</p>
-                </div>
-                <!-- Project Card 3 -->
-                <div class="bg-white p-6 border-2 border-black">
-                    <img src="https://placehold.co/600x400/000000/FFFFFF?text=REST+API" alt="Project 3" class="mb-4 w-full h-48 object-cover grayscale">
-                    <h3 class="text-xl font-semibold mb-2 text-black">Personal Task Management API</h3>
-                    <p class="text-sm text-black">A RESTful API for personal task management. Developed with Node.js and Express, using MongoDB for the database and JWT for authentication.</p>
-                </div>
-            </div>
-        </div>
+    <section id="about">
+      <article>
+        <h2>about me</h2>
+        <p>hey, i’m harsh diwan. cs undergrad interested in algorithms, data, and computational finance. slow but steady.</p>
+        <p>random link that inspires me: <a href="https://www.lesswrong.com/" class="inline-link" target="_blank">lesswrong</a></p>
+      </article>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-16 md:py-24 bg-white border-t-2 border-black">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold text-black mb-4">Contact Me</h2>
-            <p class="max-w-2xl mx-auto text-lg text-black mb-8">
-                Feel free to reach out to me via the form below. I'm always open to new opportunities and collaborations.
-            </p>
-            
-            <form id="contact-form" class="max-w-xl mx-auto bg-white p-8 border-2 border-black">
-                <div class="mb-6">
-                    <label for="name" class="block text-left font-medium mb-2">Name</label>
-                    <input type="text" id="name" name="name" class="w-full px-4 py-3 border-2 border-black focus:outline-none focus:ring-2 focus:ring-black transition duration-300" required>
-                </div>
-                <div class="mb-6">
-                    <label for="email" class="block text-left font-medium mb-2">Email</label>
-                    <input type="email" id="email" name="email" class="w-full px-4 py-3 border-2 border-black focus:outline-none focus:ring-2 focus:ring-black transition duration-300" required>
-                </div>
-                <div class="mb-6">
-                    <label for="message" class="block text-left font-medium mb-2">Message</label>
-                    <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 border-2 border-black focus:outline-none focus:ring-2 focus:ring-black transition duration-300" required></textarea>
-                </div>
-                <button type="submit" class="w-full bg-black text-white font-medium py-3 border-2 border-black hover:bg-white hover:text-black transition duration-300 transform hover:scale-105">
-                    Send Message
-                </button>
-            </form>
-        </div>
+    <section id="skills">
+      <article>
+        <h2>skills & profiles</h2>
+        <p>langs: python, c, html/css basics<br>
+           tools: git, github, linux<br>
+           interests: quant finance, data science, algorithms</p>
+        <p>profiles: <a href="https://www.hackerrank.com/profile/realharshdiwan" class="inline-link" target="_blank">hackerrank</a> | <a href="https://leetcode.com/" class="inline-link" target="_blank">leetcode</a> (future) | <a href="https://codeforces.com/" class="inline-link" target="_blank">codeforces</a> (future)</p>
+      </article>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-black text-white py-8 border-t-2 border-black">
-        <div class="container mx-auto px-4 text-center text-sm">
-            <p>&copy; 2024 Your Name. All rights reserved.</p>
-            <p class="mt-2 text-gray-400">
-                Designed and Built by You.
-            </p>
-        </div>
-    </footer>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const navLinks = document.querySelectorAll('#mobile-menu a, #desktop-menu a');
-            const contactForm = document.getElementById('contact-form');
-            const messageBox = document.getElementById('message-box');
+    <section id="timeline">
+      <article>
+        <h2>timeline</h2>
+        <ul class="timeline">
+          <li><strong>2025:</strong> starting btech in cs @ dayananda sagar university</li>
+          <li><strong>2025+:</strong> building projects, exploring computational finance & coding platforms</li>
+          <li><strong>future:</strong> internships, research, collabs</li>
+        </ul>
+      </article>
+    </section>
 
-            // Function to show a temporary message
-            function showMessage(message, type = 'success') {
-                messageBox.textContent = message;
-                if (type === 'success') {
-                    messageBox.className = 'message-box show bg-black text-white';
-                } else {
-                    messageBox.className = 'message-box show bg-black text-white';
-                }
-                setTimeout(() => {
-                    messageBox.className = 'message-box';
-                }, 3000);
-            }
+    <section id="contact">
+      <article>
+        <h2>contact</h2>
+        <p>email me at <a href="mailto:harsh-diwan@proton.me" class="inline-link">harsh-diwan@proton.me</a>. connect on <a href="https://www.linkedin.com/in/realharshdiwan" class="inline-link" target="_blank">linkedin</a>, or waste time with me on <a href="https://x.com/realharshdiwan" class="inline-link" target="_blank">x/twitter</a>.</p>
+      </article>
+    </section>
 
-            // Mobile menu toggle
-            mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
+    <section id="resume">
+      <article>
+        <h2>resume / cv</h2>
+        <p>download my latest resume as pdf: <a href="resume.pdf" class="inline-link" target="_blank">resume.pdf</a>. (hosted in this repo)</p>
+      </article>
+    </section>
+  </main>
 
-            // Hide mobile menu when a link is clicked
-            navLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    if (!mobileMenu.classList.contains('hidden')) {
-                        mobileMenu.classList.add('hidden');
-                    }
-                });
-            });
-
-            // Handle form submission (this is a non-functional example)
-            contactForm.addEventListener('submit', (event) => {
-                event.preventDefault();
-                // In a real application, you would send this data to a server
-                console.log('Form submitted!');
-                showMessage('Thank you for your message! I will get back to you soon.');
-                contactForm.reset();
-            });
+  <script>
+    document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
         });
-    </script>
+      });
+    });
+  </script>
+
+  <footer>
+    <p>&copy; 2025 harsh diwan portfolio. built on github pages. free & raw.</p>
+  </footer>
 </body>
 </html>
-    
